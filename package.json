@@ -7,12 +7,16 @@
     "dev": "nuxt dev --port=3023",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.1.0",
     "@nuxt/devtools": "latest",
+    "@nuxt/eslint": "^1.15.1",
     "@nuxtjs/tailwindcss": "^6.8.0",
+    "eslint": "^9.39.2",
     "nuxt": "^3.7.3"
   },
   "overrides": {
