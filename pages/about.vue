@@ -8,7 +8,6 @@ const router = useRouter();
 </script>
 
 <template>
-  <!-- Match layout space (100vh - header/footer 2×6rem) and center content -->
   <div class="min-h-[calc(100vh-12rem)] flex items-center justify-center">
     <div class="flex flex-col">
       <div class="text-5xl text-gray-600 font-semibold">

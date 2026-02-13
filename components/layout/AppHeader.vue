@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useHeaderStore } from "~/stores/header";
+import { useProductStore } from "~/stores/product";
 
 const headerStore = useHeaderStore();
+const productStore = useProductStore();
 const router = useRouter();
 </script>
 <template>
@@ -13,7 +15,7 @@ const router = useRouter();
     </div>
     <div class="flex items-center">
       <span v-if="headerStore.showCheckout" class="text-3xl font-medium mx-2">
-        {{ headerStore.price + "€" }}
+        {{ productStore.productPrice + "€" }}
       </span>
       <BaseButton v-if="headerStore.showCheckout" class="mx-2" color="blue"
         >Go to Checkout
