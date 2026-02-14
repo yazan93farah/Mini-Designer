@@ -166,7 +166,7 @@
 .st0,
 .st1,
 .st2 {
-  fill: var(--shirt-color, #f70776);
+  fill: var(--shirt-color, #ffffff);
 }
 .st3 {
   fill: none;

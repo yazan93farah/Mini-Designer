@@ -15,15 +15,16 @@ export const useProductStore = defineStore("product", {
     productPrice: (state): number => {
       const colorPrice = state.selectedColor?.price ?? 0;
       const motivePrice = state.selectedMotive?.price ?? 0;
-      return colorPrice + motivePrice;
+      const total = colorPrice + motivePrice;
+      return Math.trunc(total * 100) / 100;
     },
   },
 
   actions: {
-    setColor(color: Color) {
+    setColor(color: Color | null) {
       this.selectedColor = color;
     },
-    setMotive(motive: Motive) {
+    setMotive(motive: Motive | null) {
       this.selectedMotive = motive;
     },
   },

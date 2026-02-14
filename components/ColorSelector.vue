@@ -47,10 +47,11 @@ const select = (color: Color) => {
         v-for="color in visibleColors"
         :key="color.name"
         class="p-1 w-16 rounded transition cursor-pointer hover:ring-2 hover:ring-gray-400 items-center justify-items-center"
-        :class="{
-          'ring-2 ring-[#00dd4b]':
-            productStore.selectedColor?.name === color.name,
-        }"
+        :class="[
+          productStore.selectedColor?.name === color.name
+            ? 'ring-2 ring-[#00dd4b] hover:ring-[#00dd4b]'
+            : 'hover:ring-2 hover:ring-gray-400',
+        ]"
         @click="select(color)"
       >
         <div
