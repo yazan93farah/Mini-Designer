@@ -35,18 +35,20 @@ const select = (motive: Motive) => {
 
 <template>
   <div
-    class="w-24 h-84 bg-slate-50 rounded-1xl shadow-2xl p-2 flex flex-col items-center justify-items-center"
+    class="w-72 h-16 my-4 mx-8 flex-row sm:w-24 sm:h-80 sm:flex-col bg-slate-50 rounded-1xl shadow-2xl p-2 flex items-center justify-items-center justify-self-center"
   >
     <ArrowSvg
-      class="w-16 h-16 rotate-180 cursor-pointer text-green-500"
+      class="w-10 h-10 sm:w-16 sm:h-16 rotate-90 sm:rotate-180 cursor-pointer text-green-500"
       @click="prev"
     />
 
-    <div class="flex flex-1 flex-col gap-3 items-center justify-items-center">
+    <div
+      class="flex flex-1 flex-row sm:flex-col gap-3 items-center justify-items-center"
+    >
       <div
         v-for="motive in visibleMotivs"
         :key="motive.name"
-        class="p-1 w-16 rounded transition cursor-pointer hover:ring-2 hover:ring-gray-400 items-center justify-items-center"
+        class="p-1 w-10 sm:w-16 rounded transition cursor-pointer hover:ring-2 hover:ring-gray-400 items-center justify-items-center"
         :class="[
           productStore.selectedMotive?.name === motive.name
             ? 'ring-2 ring-[#00dd4b] hover:ring-[#00dd4b]'
@@ -55,11 +57,14 @@ const select = (motive: Motive) => {
         @click="select(motive)"
       >
         <img
-          class="w-15 h-10 l border-2 border-gray-200 cursor-pointer"
+          class="w-9 h-6 sm:w-15 sm:h-10 l border-2 border-gray-200 cursor-pointer"
           :src="motive.img"
         />
       </div>
     </div>
-    <ArrowSvg class="w-16 h-16 cursor-pointer text-green-500" @click="next" />
+    <ArrowSvg
+      class="w-10 h-10 sm:w-16 sm:h-16 cursor-pointer text-green-500 -rotate-90 sm:rotate-0"
+      @click="next"
+    />
   </div>
 </template>

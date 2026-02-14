@@ -7,13 +7,13 @@ const productStore = useProductStore();
 <template>
   <div class="relative">
     <ShirtSvg
-      class="w-80"
+      class="w-60 sm:w-80"
       :style="{ '--shirt-color': productStore.selectedColor?.color }"
     />
     <img
       v-if="productStore.selectedMotive"
       :src="productStore.selectedMotive.img"
-      class="absolute top-[45%] left-1/2 w-32 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+      class="absolute top-[45%] left-1/2 w-24 sm:w-32 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
     />
   </div>
 </template>

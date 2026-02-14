@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <LayoutAppHeader />
-    <main class="min-h-[calc(100vh-12rem)]">
+    <main class="h-[calc(100vh-12rem)]">
       <slot />
     </main>
     <LayoutAppFooter />
