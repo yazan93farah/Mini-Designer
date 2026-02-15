@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import type { Color, Motive } from "~/types/api";
+import { useDataStore } from "./data";
 interface ProductState {
   selectedColor: Color | null;
   selectedMotive: Motive | null;
@@ -26,6 +27,11 @@ export const useProductStore = defineStore("product", {
     },
     setMotive(motive: Motive | null) {
       this.selectedMotive = motive;
+    },
+    reset() {
+      const dataStore = useDataStore();
+      this.selectedColor = dataStore.colors[0] ?? null;
+      this.selectedMotive = dataStore.motives[0] ?? null;
     },
   },
 });
