@@ -24,14 +24,14 @@ const router = useRouter();
       </span>
       <BaseButton
         v-if="headerStore.showCheckout"
-        class="mx-2 w-44"
+        class="mx-2 w-48"
         color="blue"
         @click="navigateTo('/checkout')"
         >Go to Checkout
       </BaseButton>
       <BaseButton
         v-if="headerStore.showBack"
-        class="mx-2 w-44"
+        class="mx-2 w-48"
         color="blue"
         @click="router.back()"
         >Back

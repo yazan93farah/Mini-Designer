@@ -17,7 +17,7 @@ const handleDesignAnother = () => {
 <template>
   <div class="h-full flex items-center justify-center">
     <div class="flex flex-col justify-center items-center">
-      <div class="text-3xl sm:text-5xl text-gray-600 font-semibold">
+      <div class="pb-2 text-3xl sm:text-5xl text-gray-600 font-semibold">
         Thank you for your order.
       </div>
       <BaseButton class="mt-4 w-60" color="blue" @click="handleDesignAnother"

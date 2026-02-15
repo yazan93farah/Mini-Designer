@@ -9,11 +9,11 @@ const router = useRouter();
 <template>
   <div class="h-full flex items-center justify-center">
     <div class="flex flex-col justify-center items-center">
-      <div class="text-3xl sm:text-5xl text-gray-600 font-semibold">
+      <div class="pb-2 text-3xl sm:text-5xl text-gray-600 font-semibold">
         This is a Demo Page
       </div>
       <BaseButton
-        class="mt-4 self-center w-44"
+        class="mt-4 self-center w-48"
         color="blue"
         @click="router.back()"
         >Back</BaseButton
