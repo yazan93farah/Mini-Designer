@@ -2,12 +2,15 @@
 import { useProductStore } from "~/stores/product";
 import ShirtSvg from "./icons/ShirtSvg.vue";
 const productStore = useProductStore();
+defineProps<{
+  size: string;
+}>();
 </script>
 
 <template>
   <div class="relative">
     <ShirtSvg
-      class="w-60 sm:w-80"
+      :class="size"
       :style="{ '--shirt-color': productStore.selectedColor?.color }"
     />
     <img

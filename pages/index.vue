@@ -7,7 +7,11 @@ useHeader({
 });
 
 const dataStore = useDataStore();
-await dataStore.fetchData();
+try {
+  await dataStore.fetchData();
+} catch (err) {
+  console.error(err);
+}
 </script>
 
 <template>
@@ -15,15 +19,15 @@ await dataStore.fetchData();
     <div
       class="flex flex-col justify-between items-center w-full h-full px-6 md:px-12 sm:grid sm:grid-cols-3 sm:gap-4 md:gap-6"
     >
-      <div class="pt-4 sm:justify-self-start">
+      <div class="sm:justify-self-start">
         <ColorSelector v-if="dataStore.colors" :colors="dataStore.colors" />
       </div>
 
       <div class="sm:justify-self-center">
-        <ShirtMotive />
+        <ShirtMotive size="w-60 sm:w-80" />
       </div>
 
-      <div class="pb-4 sm:pb-1 sm:justify-self-end">
+      <div class="sm:justify-self-end">
         <MotivesSelector
           v-if="dataStore.motives"
           :motives="dataStore.motives"

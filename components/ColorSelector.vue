@@ -35,7 +35,7 @@ const select = (color: Color) => {
 
 <template>
   <div
-    class="w-72 h-16 my-4 mx-8 flex-row sm:w-24 sm:h-80 sm:flex-col bg-slate-50 rounded-1xl shadow-2xl p-2 flex items-center justify-items-center justify-self-center"
+    class="w-72 h-16 my-4 mx-8 flex-row sm:w-24 sm:h-80 sm:flex-col bg-slate-50 rounded-xl shadow-2xl border border-gray-200 p-2 flex items-center justify-items-center justify-self-center"
   >
     <ArrowSvg
       class="w-10 h-10 sm:w-16 sm:h-16 rotate-90 sm:rotate-180 cursor-pointer text-green-500"
