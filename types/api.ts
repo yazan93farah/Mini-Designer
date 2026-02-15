@@ -9,3 +9,5 @@ export interface Motive {
   img: string;
   price: number;
 }
+
+export type OrderValidationErrors = Record<string, string[]>;

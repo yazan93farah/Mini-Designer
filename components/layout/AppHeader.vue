@@ -33,8 +33,9 @@ const router = useRouter();
         v-if="headerStore.showBack"
         class="mx-2 w-48"
         color="blue"
-        @click="router.back()"
-        >Back
+        @click="headerStore.backTo ? router.push(headerStore.backTo) : router.back()"
+      >
+        Back
       </BaseButton>
     </div>
   </header>

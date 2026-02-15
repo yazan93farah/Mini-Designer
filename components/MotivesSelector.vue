@@ -11,7 +11,7 @@ const startIndex = ref(0);
 
 const visibleCount = 4;
 
-const visibleMotivs = computed(() =>
+const visibleMotives = computed(() =>
   props.motives.slice(startIndex.value, startIndex.value + visibleCount),
 );
 
@@ -46,7 +46,7 @@ const select = (motive: Motive) => {
       class="flex flex-1 flex-row sm:flex-col gap-3 items-center justify-items-center"
     >
       <div
-        v-for="motive in visibleMotivs"
+        v-for="motive in visibleMotives"
         :key="motive.name"
         class="p-1 w-10 sm:w-16 rounded transition cursor-pointer hover:ring-2 hover:ring-gray-400 items-center justify-items-center"
         :class="[
@@ -57,7 +57,7 @@ const select = (motive: Motive) => {
         @click="select(motive)"
       >
         <img
-          class="w-9 h-6 sm:w-15 sm:h-10 l border-2 border-gray-200 cursor-pointer"
+          class="w-9 h-6 sm:w-14 sm:h-10 border-2 border-gray-200 cursor-pointer"
           :src="motive.img"
         />
       </div>

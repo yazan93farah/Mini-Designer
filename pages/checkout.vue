@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import ShirtMotive from "~/components/ShirtMotive.vue";
 import { useProductStore } from "~/stores/product";
+import type { OrderValidationErrors } from "~/types/api";
 
 useHeader({
   title: "Checkout",
   showBack: true,
+  backTo: "/",
 });
 const productStore = useProductStore();
 const router = useRouter();
@@ -17,9 +19,12 @@ onBeforeMount(() => {
 
 const name = ref("");
 const address = ref("");
-const errors = ref<any>({});
+const errors = ref<OrderValidationErrors>({});
+const generalMessage = ref("");
+
 const order = async () => {
   errors.value = {};
+  generalMessage.value = "";
 
   try {
     await $fetch("/api/order", {
@@ -31,9 +36,16 @@ const order = async () => {
     });
 
     router.push("/success");
-  } catch (err: any) {
-    if (err.status === 422) {
-      errors.value = err.data.errors;
+  } catch (err: unknown) {
+    const e = err as {
+      status?: number;
+      data?: { message?: string; errors?: OrderValidationErrors };
+    };
+    if (e.status === 422 && e.data) {
+      generalMessage.value = e.data.message ?? "Validation failed.";
+      if (e.data.errors) {
+        errors.value = e.data.errors;
+      }
     }
   }
 };
@@ -82,6 +94,12 @@ const order = async () => {
         class="flex flex-col w-80 h-96 rounded-lg bg-slate-50 shadow-2xl border border-gray-200 py-4 px-6"
       >
         <div class="text-3xl py-4">Personal Data</div>
+        <div
+          v-if="generalMessage"
+          class="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm"
+        >
+          {{ generalMessage }}
+        </div>
         <!-- Name Field -->
         <div>
           <label class="text-sm tracking-widest text-gray-700 mb-3">
@@ -91,8 +109,13 @@ const order = async () => {
             v-model="name"
             type="text"
             placeholder="Enter your Name"
-            class="w-full rounded-xl border border-gray-300 bg-gray-100 px-5 py-2 text-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
-          />
+            :class="[
+              'w-full rounded-xl border px-5 py-2 text-lg placeholder-gray-400 focus:outline-none focus:ring-2',
+              errors.name
+                ? 'border-red-500 bg-red-50 focus:ring-red-300'
+                : 'border-gray-300 bg-gray-100 focus:ring-gray-300',
+            ]"
+          >
           <div v-if="errors.name" class="text-red-500 text-sm mt-1">
             {{ errors.name[0] }}
           </div>
@@ -107,8 +130,13 @@ const order = async () => {
             v-model="address"
             type="text"
             placeholder="Enter your Address"
-            class="w-full rounded-xl border border-gray-300 bg-gray-100 px-5 py-2 text-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
-          />
+            :class="[
+              'w-full rounded-xl border px-5 py-2 text-lg placeholder-gray-400 focus:outline-none focus:ring-2',
+              errors.address
+                ? 'border-red-500 bg-red-50 focus:ring-red-300'
+                : 'border-gray-300 bg-gray-100 focus:ring-gray-300',
+            ]"
+          >
           <div v-if="errors.address" class="text-red-500 text-sm mt-1">
             {{ errors.address[0] }}
           </div>

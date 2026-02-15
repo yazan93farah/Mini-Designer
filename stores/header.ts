@@ -4,6 +4,7 @@ export type HeaderConfig = {
   title: string;
   showBack?: boolean;
   showCheckout?: boolean;
+  backTo?: string;
 };
 
 export const useHeaderStore = defineStore("header", {
@@ -19,9 +20,10 @@ export const useHeaderStore = defineStore("header", {
     },
 
     resetHeader() {
-      this.title = "";
+      this.title = "no title";
       this.showBack = false;
       this.showCheckout = false;
+      this.backTo = undefined;
     },
   },
 });

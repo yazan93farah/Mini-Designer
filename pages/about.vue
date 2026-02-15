@@ -2,6 +2,7 @@
 useHeader({
   title: "About this project",
   showBack: true,
+  backTo: "/",
 });
 const router = useRouter();
 </script>

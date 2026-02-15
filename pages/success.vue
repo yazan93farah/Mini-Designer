@@ -4,6 +4,7 @@ import { useProductStore } from "~/stores/product";
 useHeader({
   title: "Order Success",
   showBack: true,
+  backTo: "/",
 });
 const router = useRouter();
 const productStore = useProductStore();
